@@ -7,6 +7,7 @@
 .fieldGroup label {
   font-size: 0.75rem;
   font-weight: 600;
+  margin-bottom: 0.25rem;
 }
 .fieldGroup input {
   font-size: 1rem;
