@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Resume from "./Resume";
-import TextField from "./components/TextField";
+// import TextField from "./components/TextField";
+import CardFields from "./components/CardFields";
 import "./App.css";
 
 function App() {
@@ -16,19 +17,7 @@ function App() {
     <>
       {console.log(data)}
       <div className="forms-sidebar">
-        <div className="card">
-          <div className="header">
-            <h2>Personal Information</h2>
-            <span className="material-symbols-outlined">
-              expand_more expand_less
-            </span>
-          </div>
-          <div className="body">
-            <TextField name="bunda" handleChange={handleTextFieldChange} />
-            <TextField name="teste" handleChange={handleTextFieldChange} />
-            <button>Save</button>
-          </div>
-        </div>
+        <CardFields handleTextFieldChange={handleTextFieldChange} />
       </div>
       <Resume
         name="John Smith"
