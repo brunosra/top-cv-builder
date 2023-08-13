@@ -24,19 +24,14 @@ function Resume() {
         <h2>Education</h2>
         <ul>
           <li>
-            <h3>Institution Name</h3>
-            <p>Title of Study</p>
-            <p>Date of Study</p>
+            <h3>BSc. Industrial Design</h3>
+            <p>Universidade Estácio de Sá</p>
+            <p>Graduated on 2004</p>
           </li>
           <li>
-            <h3>Institution Name</h3>
-            <p>Title of Study</p>
-            <p>Date of Study</p>
-          </li>
-          <li>
-            <h3>Institution Name</h3>
-            <p>Title of Study</p>
-            <p>Date of Study</p>
+            <h3>BSc. Mechanical Engineering</h3>
+            <p>Universidade do Estado do RJ</p>
+            <p>Unfinished · 1998-2000</p>
           </li>
         </ul>
       </div>
