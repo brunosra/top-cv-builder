@@ -1,0 +1,28 @@
+.fieldGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldGroup label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.fieldGroup input {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  border-color: #414048;
+  border-width: 1px;
+  border-style: solid;
+  color: #ccc;
+  font-weight: 300;
+  transition: border-color 0.2s linear;
+}
+
+.fieldGroup input:focus-visible {
+  outline: none;
+  border-color: #523fcf;
+};
