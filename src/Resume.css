@@ -44,25 +44,27 @@
 }
 
 /* Header Personal Info */
-.section-resume.personal-info {
+.header-resume.personal-info {
   background-color: var(--color-font);
   color: var(--color-background);
   padding-top: 1cm;
   padding-bottom: 1cm;
 }
 
-.section-resume.personal-info h1 {
+.header-resume.personal-info h1 {
   font-size: 3rem; /* 48px */
   line-height: 1;
   margin-bottom: 0.5cm;
 }
 
-.section-resume.personal-info .info {
+.header-resume.personal-info .info {
   margin-right: 1cm;
   display: inline-flex;
   gap: 0.25cm;
 }
 
-.section-resume.personal-info .info:last-of-type {
+.header-resume.personal-info .info:last-of-type {
   margin-right: 0;
 }
+
+/* Header Personal Info */

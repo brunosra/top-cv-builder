@@ -6,7 +6,7 @@ function Resume() {
 
   return (
     <div className="page resume">
-      <div className="section-resume personal-info">
+      <div className="header-resume personal-info">
         <h1>Bruno Almeida</h1>
         <span className="info">
           <span className="material-symbols-outlined">mail</span>email@email.com
