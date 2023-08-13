@@ -9,13 +9,18 @@
 
 .card .header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  cursor: pointer;
 }
 
 .card .header h2 {
   font-size: 1rem;
   margin: 0;
+}
+
+.card .body {
+  margin-top: 1rem;
 }
 
 .card .body form {
