@@ -1,8 +1,12 @@
 import TextField from "./TextField";
-import "./CardFields.css";
 import { useState } from "react";
 
-function CardFields({ handleTextFieldChange }) {
+function PersonalFields({
+  handleTextFieldChange,
+  handleSubmit,
+  id,
+  data = {},
+}) {
   let [expanded, setExpanded] = useState(true);
 
   const handleToggle = () => {
@@ -10,7 +14,7 @@ function CardFields({ handleTextFieldChange }) {
   };
 
   return (
-    <div className="card" id="form">
+    <div className="card" id={id}>
       <div className="header" onClick={handleToggle}>
         <h2>Personal Information</h2>
         <span className="material-symbols-outlined">
@@ -24,6 +28,7 @@ function CardFields({ handleTextFieldChange }) {
               name="name"
               label="First and Last Name"
               handleChange={handleTextFieldChange}
+              initialValue={data.name}
             />
             <TextField
               name="email"
@@ -40,7 +45,7 @@ function CardFields({ handleTextFieldChange }) {
               label="Location"
               handleChange={handleTextFieldChange}
             />
-            <button>Save</button>
+            <button onClick={handleSubmit}>Save</button>
           </form>
         </div>
       ) : null}
@@ -48,4 +53,4 @@ function CardFields({ handleTextFieldChange }) {
   );
 }
 
-export default CardFields;
+export default PersonalFields;
