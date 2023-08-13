@@ -1,17 +1,18 @@
 .page {
-	/* Styles for better appearance on screens only -- are reset to defaults in print styles later */
-  background-color: #fff;
-  color:rgb(16, 16, 19);
-
+  /* Variables */
+  --color-font: rgb(16, 16, 19);
+  --color-background: #fff;
+  
+  /* Styles for better appearance on screens only -- are reset to defaults in print styles later */
 	/* Reflect the paper width in the screen rendering (must match size from @page rule) */
 	width: 21cm;
 	/* Reflect the paper height in the screen rendering (must match size from @page rule) */
 	min-height: 29.7cm;
 
 	/* Reflect the actual page margin/padding on paper in the screen rendering (must match margin from @page rule) */
-	padding-left: 2cm;
-	padding-top: 2cm;
-	padding-right: 2cm;
+	padding-left: 0cm;
+	padding-top: 0cm;
+	padding-right: 0cm;
 	padding-bottom: 2cm;
 }
 
@@ -22,8 +23,46 @@
 	size: A4 portrait;
 
 	/* Margin per single side of the page */
-	margin-left: 2cm;
-	margin-top: 2cm;
-	margin-right: 2cm;
+	margin-left: 0cm;
+	margin-top: 0cm;
+	margin-right: 0cm;
 	margin-bottom: 2cm;
+}
+
+.page {
+  background-color: var(--color-background);
+  color: var(--color-font);
+}
+
+.resume h1,
+.resume h2,
+.resume h3,
+.resume h4 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Header Personal Info */
+.section-resume.personal-info {
+  background-color: var(--color-font);
+  color: var(--color-background);
+  padding-top: 1cm;
+  padding-bottom: 1cm;
+}
+
+.section-resume.personal-info h1 {
+  font-size: 3rem; /* 48px */
+  line-height: 1;
+  margin-bottom: 0.5cm;
+}
+
+.section-resume.personal-info .info {
+  margin-right: 1cm;
+  display: inline-flex;
+  gap: 0.25cm;
+}
+
+.section-resume.personal-info .info:last-of-type {
+  margin-right: 0;
 }

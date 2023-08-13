@@ -6,9 +6,19 @@ function Resume() {
 
   return (
     <div className="page resume">
-      <h1>Bruno Almeida</h1>
       <div className="section-resume personal-info">
-        <span>email@email.com</span> · <span>+351 999 999 999</span>
+        <h1>Bruno Almeida</h1>
+        <span className="info">
+          <span className="material-symbols-outlined">mail</span>email@email.com
+        </span>
+        <span className="info">
+          <span className="material-symbols-outlined">phone_in_talk</span>+351
+          999 999 999
+        </span>
+        <span className="info">
+          <span className="material-symbols-outlined">location_on</span> Braga,
+          Portugal
+        </span>
       </div>
       <div className="section-resume education">
         <h2>Education</h2>
