@@ -1,29 +1,40 @@
 import { useState } from "react";
 import Resume from "./Resume";
-// import TextField from "./components/TextField";
-import CardFields from "./components/CardFields";
+import PersonalFields from "./components/PersonalFields";
 import "./App.css";
 
 function App() {
-  const [text, setText] = useState("");
-  const [data, setData] = useState({});
+  const [personalData, setPersonalData] = useState({});
+  const [data, setData] = useState({
+    personal: {},
+    education: [],
+    experience: [],
+  });
 
   function handleTextFieldChange(e) {
-    setData({ ...data, [e.target.name]: e.target.value });
-    setText(e.target.value);
+    setPersonalData({ ...personalData, [e.target.name]: e.target.value });
+  }
+
+  function handlePersonalSubmit(e) {
+    e.preventDefault();
+    setData({ ...data, personal: { ...personalData } });
   }
 
   return (
     <>
-      {console.log(data)}
       <div className="forms-sidebar">
-        <CardFields handleTextFieldChange={handleTextFieldChange} />
+        <PersonalFields
+          id="personal"
+          handleSubmit={handlePersonalSubmit}
+          handleTextFieldChange={handleTextFieldChange}
+          data={personalData}
+        />
       </div>
       <Resume
-        name="John Smith"
-        email="john@smith.com"
-        phone="+1 55 555 55 55"
-        location="Narnia, USA"
+        name={data.personal.name}
+        email={data.personal.email}
+        phone={data.personal.phone}
+        location={data.personal.location}
       />
     </>
   );
