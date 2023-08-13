@@ -46,7 +46,7 @@ let experienceDefaultArr = [
 ];
 
 function Resume({
-  name = "Sunda Loxa",
+  name = "John Smith",
   email = "",
   phone = "",
   location = "",
