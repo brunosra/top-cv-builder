@@ -14,6 +14,15 @@
   -webkit-text-size-adjust: 100%;
 }
 
+/* Material Icons */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 24
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -29,11 +38,6 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
 }
 
 button {
