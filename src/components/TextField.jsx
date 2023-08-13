@@ -19,7 +19,7 @@ function TextInput({
         {...props}
         name={name}
         type={type}
-        value={initialValue}
+        // value={initialValue}
         onChange={handleChange}
       />
     </div>

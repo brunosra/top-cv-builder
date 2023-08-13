@@ -4,10 +4,17 @@ import TextField from "./components/TextField";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [text, setText] = useState("");
+  const [data, setData] = useState({});
+
+  function handleTextFieldChange(e) {
+    setData({ ...data, [e.target.name]: e.target.value });
+    setText(e.target.value);
+  }
 
   return (
     <>
+      {console.log(data)}
       <div className="forms-sidebar">
         <div className="card">
           <div className="header">
@@ -17,7 +24,9 @@ function App() {
             </span>
           </div>
           <div className="body">
-            <TextField value="test" />
+            <TextField name="bunda" handleChange={handleTextFieldChange} />
+            <TextField name="teste" handleChange={handleTextFieldChange} />
+            <button>Save</button>
           </div>
         </div>
       </div>
