@@ -1,14 +1,15 @@
 import "./Resume.css";
+import { v4 as uuidv4 } from "uuid";
 
 let educationDefaultArr = [
   {
-    uuid: 1,
+    uuid: uuidv4(),
     degree: "BSc. Industrial Design",
     institution: "Universidade Estácio de Sá",
     date: "Graduated on 2004",
   },
   {
-    uuid: 2,
+    uuid: uuidv4(),
     degree: "BSc. Mechanical Engineering",
     institution: "Universidade do Estado do RJ",
     date: "Unfinished · 1998-2000",
@@ -17,7 +18,7 @@ let educationDefaultArr = [
 
 let experienceDefaultArr = [
   {
-    uuid: 3,
+    uuid: uuidv4(),
     position: "Mr. Super Director",
     company: "Super company",
     fromDate: "Jan 20XX",
@@ -26,7 +27,7 @@ let experienceDefaultArr = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam erat mi, fringilla et lectus id, porttitor ultrices nisl. Suspendisse scelerisque, erat nec sagittis imperdiet, dolor tortor ultrices est, vitae ornare purus quam ac nulla. Donec sodales sit amet augue eget blandit.",
   },
   {
-    uuid: 4,
+    uuid: uuidv4(),
     position: "Mr. Super Director",
     company: "Super company",
     fromDate: "Jan 20XX",
@@ -35,7 +36,7 @@ let experienceDefaultArr = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam erat mi, fringilla et lectus id, porttitor ultrices nisl. Suspendisse scelerisque, erat nec sagittis imperdiet, dolor tortor ultrices est, vitae ornare purus quam ac nulla. Donec sodales sit amet augue eget blandit.",
   },
   {
-    uuid: 5,
+    uuid: uuidv4(),
     position: "Mr. Super Director",
     company: "Super company",
     fromDate: "Jan 20XX",
