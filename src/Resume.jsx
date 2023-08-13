@@ -1,8 +1,8 @@
-import { useState } from "react";
+// import { useState } from "react";
 import "./Resume.css";
 
 function Resume() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
   return (
     <div className="page resume">
@@ -67,4 +67,4 @@ function Resume() {
   );
 }
 
-export default App;
+export default Resume;

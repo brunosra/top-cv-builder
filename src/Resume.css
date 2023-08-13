@@ -1,5 +1,7 @@
 .page {
 	/* Styles for better appearance on screens only -- are reset to defaults in print styles later */
+  background-color: #fff;
+  color:rgb(16, 16, 19);
 
 	/* Reflect the paper width in the screen rendering (must match size from @page rule) */
 	width: 21cm;
@@ -11,4 +13,17 @@
 	padding-top: 2cm;
 	padding-right: 2cm;
 	padding-bottom: 2cm;
+}
+
+@page {
+	/* You can only change the size, margins, orphans, widows and page breaks here */
+
+	/* Paper size and page orientation */
+	size: A4 portrait;
+
+	/* Margin per single side of the page */
+	margin-left: 2cm;
+	margin-top: 2cm;
+	margin-right: 2cm;
+	margin-bottom: 2cm;
 }
