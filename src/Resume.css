@@ -1,8 +1,4 @@
 .page {
-  /* Variables */
-  --color-font: rgb(16, 16, 19);
-  --color-background: #fff;
-  
   /* Styles for better appearance on screens only -- are reset to defaults in print styles later */
 	/* Reflect the paper width in the screen rendering (must match size from @page rule) */
 	width: 21cm;
