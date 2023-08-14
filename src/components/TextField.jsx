@@ -1,9 +1,14 @@
 import { useState } from "react";
 import "./TextField.css";
 
-function TextInput({ name, label, type = "text", handleChange, ...props }) {
-  const [value, setValue] = useState("");
-
+function TextInput({
+  name,
+  label,
+  type = "text",
+  handleChange,
+  value = "",
+  ...props
+}) {
   return (
     <div className="fieldGroup">
       <label htmlFor={name}>{label}</label>
@@ -13,7 +18,7 @@ function TextInput({ name, label, type = "text", handleChange, ...props }) {
         type={type}
         value={value}
         // value={initialValue}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={handleChange}
       />
     </div>
   );
