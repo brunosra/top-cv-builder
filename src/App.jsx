@@ -29,14 +29,12 @@ function App() {
 
   return (
     <>
-      <div className="forms-sidebar">
-        <PersonalFields
-          id="personal"
-          handleSubmit={handlePersonalSubmit}
-          // handleTextFieldChange={handleTextFieldChange}
-          data={personalData}
-        />
-      </div>
+      <PersonalFields
+        id="personal"
+        handleSubmit={handlePersonalSubmit}
+        // handleTextFieldChange={handleTextFieldChange}
+        data={personalData}
+      />
       <Resume
         name={data.personal.name}
         email={data.personal.email}
