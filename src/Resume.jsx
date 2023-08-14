@@ -79,6 +79,7 @@ function Resume({
         )}
       </div>
       <div className="section-resume education">
+        <EditButton handleClick={() => console.log("click!")} />
         <h2>Education</h2>
         <ul>
           {education.map((item) => (
@@ -91,6 +92,7 @@ function Resume({
         </ul>
       </div>
       <div className="section-resume experience">
+        <EditButton handleClick={() => console.log("click!")} />
         <h2>Latest Experience</h2>
         <ul>
           {experience.map((item) => (

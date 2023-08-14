@@ -74,6 +74,13 @@
   padding-left: 1.5cm;
   margin-bottom: 2cm;
   float: left;
+  position: relative;
+}
+
+.section-resume .edit-btn {
+  top: 0;
+  border: 0;
+  right: 0;
 }
 
 .section-resume ul {
