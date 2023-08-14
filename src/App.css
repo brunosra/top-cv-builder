@@ -11,4 +11,7 @@
 
 .forms-sidebar {
   flex-grow: 1;
+  position: sticky;
+  top: 1rem;
+  align-self: flex-start;
 }

@@ -12,12 +12,19 @@ function App() {
   });
 
   function handleTextFieldChange(e) {
-    setPersonalData({ ...personalData, [e.target.name]: e.target.value });
+    setPersonalData({ ...personalData });
   }
 
   function handlePersonalSubmit(e) {
     e.preventDefault();
-    setData({ ...data, personal: { ...personalData } });
+    let tempObj = {};
+    const fields = [...e.target.form].filter(
+      (elm) => elm.tagName.toLowerCase() === "input"
+    );
+    fields.map((item) => {
+      tempObj[item.name] = item.value;
+    });
+    setPersonalData({ ...personalData, ...tempObj });
   }
 
   return (
@@ -26,7 +33,7 @@ function App() {
         <PersonalFields
           id="personal"
           handleSubmit={handlePersonalSubmit}
-          handleTextFieldChange={handleTextFieldChange}
+          // handleTextFieldChange={handleTextFieldChange}
           data={personalData}
         />
       </div>
