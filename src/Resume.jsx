@@ -1,5 +1,6 @@
 import "./Resume.css";
 import { v4 as uuidv4 } from "uuid";
+import EditButton from "./components/EditButton";
 
 let educationDefaultArr = [
   {
@@ -57,6 +58,7 @@ function Resume({
   return (
     <div className="page resume">
       <div className="header-resume personal-info">
+        <EditButton handleClick={() => console.log("click!")} />
         <h1>{name}</h1>
         {email && (
           <span className="info">

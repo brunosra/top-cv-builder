@@ -50,6 +50,7 @@
   padding-top: 1cm;
   padding-bottom: 1cm;
   margin-bottom: 1cm;
+  position: relative;
 }
 
 .header-resume.personal-info h1 {
