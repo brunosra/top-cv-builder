@@ -39,6 +39,7 @@ function PersonalFields({
             handleChange={handleTextFieldChange}
             value={data.location}
           />
+          <button onClick={handleSubmit}>Cancel</button>
           <button onClick={handleSubmit}>Save</button>
         </form>
       </div>
