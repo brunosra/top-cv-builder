@@ -1,9 +1,9 @@
 import TextField from "./TextField";
-import { useState } from "react";
 
 function PersonalFields({
   handleTextFieldChange,
   handleSubmit,
+  handleCancel,
   id,
   data = {},
 }) {
@@ -41,7 +41,7 @@ function PersonalFields({
               handleChange={handleTextFieldChange}
               value={data.location}
             />
-            <button onClick={handleSubmit}>Cancel</button>
+            <button onClick={handleCancel}>Cancel</button>
             <button onClick={handleSubmit}>Save</button>
           </form>
         </div>
