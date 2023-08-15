@@ -29,12 +29,6 @@ function App() {
 
   return (
     <>
-      <PersonalFields
-        id="personal"
-        handleSubmit={handlePersonalSubmit}
-        // handleTextFieldChange={handleTextFieldChange}
-        data={personalData}
-      />
       <Resume
         name={data.personal.name}
         email={data.personal.email}
