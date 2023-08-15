@@ -73,12 +73,20 @@ function Resume({
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
+  const submitData = (e) => {
+    e.preventDefault();
+    console.log(data);
+  };
+
   return (
     <>
+      {mode !== "view"
+        ? (document.getElementsByTagName("body")[0].style.overflow = "hidden")
+        : (document.getElementsByTagName("body")[0].style.overflow = "auto")}
       {mode == "editPersonal" ? (
         <PersonalFields
           handleTextFieldChange={captureDataFromTextFields}
-          handleSubmit={captureDataFromTextFields}
+          handleSubmit={submitData}
           handleCancel={cancelForm}
           id="personal"
           data={data}
