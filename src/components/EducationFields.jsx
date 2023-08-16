@@ -1,4 +1,5 @@
 import TextField from "./TextField";
+import "./EducationFields.css";
 
 function EducationFields({
   handleTextFieldChange,
@@ -22,31 +23,35 @@ function EducationFields({
             <div className="row" key="0">
               <TextField
                 name="degree"
-                label="Degree Name"
+                label="Degree name"
                 handleChange={handleTextFieldChange}
                 value={data.degree}
               />
               <TextField
                 name="institution"
-                label="Institution Name"
+                label="Institution name"
                 handleChange={handleTextFieldChange}
                 value={data.institution}
               />
               <TextField
                 name="date"
-                label="Date and Details"
+                label="Date and details"
                 handleChange={handleTextFieldChange}
                 value={data.date}
               />
               <button onClick={handleDeleteLine}>
-                <span className="material-symbols-outlined">delete</span> Remove
+                <span className="material-symbols-outlined">delete</span>
               </button>
             </div>
             <button onClick={handleAddLine}>
               <span className="material-symbols-outlined">add</span> Add Line
             </button>
-            <button onClick={handleCancel}>Cancel</button>
-            <button onClick={handleSubmit}>Save</button>
+            <div className="lastButtons">
+              <button onClick={handleCancel} className="ghost">
+                Cancel
+              </button>
+              <button onClick={handleSubmit}>Save</button>
+            </div>
           </form>
         </div>
       </div>

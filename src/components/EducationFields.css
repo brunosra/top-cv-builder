@@ -1,0 +1,15 @@
+#education .row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: end;
+  gap: 1rem;
+}
+
+#education .row .fieldGroup {
+  width: auto;
+}
+
+#education .row button {
+  flex-grow: 0;
+}
