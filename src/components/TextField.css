@@ -8,6 +8,7 @@
   font-size: 0.75rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
+  text-align: left;
 }
 .fieldGroup input {
   font-size: 1rem;
@@ -20,6 +21,8 @@
   color: #ccc;
   font-weight: 300;
   transition: border-color 0.2s linear;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .fieldGroup input:focus-visible {
