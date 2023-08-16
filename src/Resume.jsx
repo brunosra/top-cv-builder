@@ -75,6 +75,12 @@ function Resume() {
     document.body.style.overflow = "hidden";
   };
 
+  const openEducationForm = () => {
+    setTempData({ ...data });
+    setMode("editEducation");
+    document.body.style.overflow = "hidden";
+  };
+
   const cancelForm = () => {
     document.body.style.overflow = "auto";
     setMode("view");
@@ -115,6 +121,16 @@ function Resume() {
         />
       ) : null}
 
+      {mode == "editEducation" ? (
+        <EducationFields
+          handleTextFieldChange={captureDataFromTextFields}
+          handleSubmit={submitData}
+          handleCancel={cancelForm}
+          id="education"
+          data={tempData.education}
+        />
+      ) : null}
+
       <div className="page resume">
         <div className="header-resume personal-info">
           <EditButton handleClick={openPersonalForm} />
@@ -139,7 +155,7 @@ function Resume() {
           )}
         </div>
         <div className="section-resume education">
-          <EditButton handleClick={() => console.log("click!")} />
+          <EditButton handleClick={openEducationForm} />
           <h2>Education</h2>
           <ul>
             {data.education.map((item) => (
