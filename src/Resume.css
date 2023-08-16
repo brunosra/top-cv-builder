@@ -10,6 +10,7 @@
 	padding-top: 0cm;
 	padding-right: 0cm;
 	padding-bottom: 2cm;
+  margin: 0 auto;
 }
 
 @page {
@@ -50,6 +51,7 @@
   padding-top: 1cm;
   padding-bottom: 1cm;
   margin-bottom: 1cm;
+  position: relative;
 }
 
 .header-resume.personal-info h1 {
@@ -73,6 +75,13 @@
   padding-left: 1.5cm;
   margin-bottom: 2cm;
   float: left;
+  position: relative;
+}
+
+.section-resume .edit-btn {
+  top: 0;
+  border: 0;
+  right: 0;
 }
 
 .section-resume ul {

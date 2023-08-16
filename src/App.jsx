@@ -1,29 +1,39 @@
 import { useState } from "react";
 import Resume from "./Resume";
-// import TextField from "./components/TextField";
-import CardFields from "./components/CardFields";
+import PersonalFields from "./components/PersonalFields";
 import "./App.css";
 
 function App() {
-  const [text, setText] = useState("");
-  const [data, setData] = useState({});
+  const [personalData, setPersonalData] = useState({});
+  const [data, setData] = useState({
+    personal: {},
+    education: [],
+    experience: [],
+  });
 
   function handleTextFieldChange(e) {
-    setData({ ...data, [e.target.name]: e.target.value });
-    setText(e.target.value);
+    setPersonalData({ ...personalData });
+  }
+
+  function handlePersonalSubmit(e) {
+    e.preventDefault();
+    let tempObj = {};
+    const fields = [...e.target.form].filter(
+      (elm) => elm.tagName.toLowerCase() === "input"
+    );
+    fields.map((item) => {
+      tempObj[item.name] = item.value;
+    });
+    setPersonalData({ ...personalData, ...tempObj });
   }
 
   return (
     <>
-      {console.log(data)}
-      <div className="forms-sidebar">
-        <CardFields handleTextFieldChange={handleTextFieldChange} />
-      </div>
       <Resume
-        name="John Smith"
-        email="john@smith.com"
-        phone="+1 55 555 55 55"
-        location="Narnia, USA"
+        name={data.personal.name}
+        email={data.personal.email}
+        phone={data.personal.phone}
+        location={data.personal.location}
       />
     </>
   );

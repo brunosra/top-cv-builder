@@ -1,0 +1,15 @@
+.edit-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: rgba(125,125,125,0.5) 1px solid;
+  border-radius: 4px;
+  padding: 0 0.25rem;
+}
+
+.edit-btn span {
+  font-size: 1rem;
+}

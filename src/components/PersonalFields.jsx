@@ -1,51 +1,53 @@
 import TextField from "./TextField";
-import "./CardFields.css";
-import { useState } from "react";
 
-function CardFields({ handleTextFieldChange }) {
-  let [expanded, setExpanded] = useState(true);
-
-  const handleToggle = () => {
-    setExpanded(!expanded);
-  };
-
+function PersonalFields({
+  handleTextFieldChange,
+  handleSubmit,
+  handleCancel,
+  id,
+  data = {},
+}) {
   return (
-    <div className="card" id="form">
-      <div className="header" onClick={handleToggle}>
-        <h2>Personal Information</h2>
-        <span className="material-symbols-outlined">
-          {expanded ? "expand_less" : "expand_more"}
-        </span>
-      </div>
-      {expanded ? (
+    <>
+      <div className="backdrop"></div>
+      <div className="card">
+        {console.log(data)}
+        <div className="header">
+          <h2>Personal Information</h2>
+        </div>
         <div className="body">
-          <form action="#">
+          <form action="#" id={id} method="POST">
             <TextField
               name="name"
               label="First and Last Name"
               handleChange={handleTextFieldChange}
+              value={data.name}
             />
             <TextField
               name="email"
               label="E-mail"
               handleChange={handleTextFieldChange}
+              value={data.email}
             />
             <TextField
               name="phone"
               label="Phone"
               handleChange={handleTextFieldChange}
+              value={data.phone}
             />
             <TextField
               name="location"
               label="Location"
               handleChange={handleTextFieldChange}
+              value={data.location}
             />
-            <button>Save</button>
+            <button onClick={handleCancel}>Cancel</button>
+            <button onClick={handleSubmit}>Save</button>
           </form>
         </div>
-      ) : null}
-    </div>
+      </div>
+    </>
   );
 }
 
-export default CardFields;
+export default PersonalFields;
