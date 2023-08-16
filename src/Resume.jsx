@@ -4,6 +4,12 @@ import EditButton from "./components/EditButton";
 import { useState } from "react";
 import PersonalFields from "./components/PersonalFields";
 
+let personalDefault = {
+  name: "John Smith",
+  email: "john.smith@fakemail.com",
+  phone: "+55 5555 5555",
+  location: "Somewhere, USA",
+};
 let educationDefaultArr = [
   {
     uuid: uuidv4(),
@@ -49,69 +55,85 @@ let experienceDefaultArr = [
   },
 ];
 
-function Resume({
-  name = "John Smith",
-  email = "",
-  phone = "",
-  location = "",
-  education = educationDefaultArr,
-  experience = experienceDefaultArr,
-}) {
+function Resume() {
   const [mode, setMode] = useState("view");
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    personal: personalDefault,
+    education: educationDefaultArr,
+    experience: experienceDefaultArr,
+  });
+  const [tempData, setTempData] = useState({
+    personal: personalDefault,
+    education: educationDefaultArr,
+    experience: experienceDefaultArr,
+  });
 
   const openPersonalForm = () => {
+    setTempData({ ...data });
     setMode("editPersonal");
+    document.body.style.overflow = "hidden";
   };
 
   const cancelForm = () => {
+    document.body.style.overflow = "auto";
     setMode("view");
   };
 
   const captureDataFromTextFields = (e) => {
-    console.log(e.target.name, e.target.value);
-    setData({ ...data, [e.target.name]: e.target.value });
+    setTempData({ ...data });
+
+    let formID = e.target.form.id;
+    let fieldName = e.target.name;
+    let fieldValue = e.target.value;
+
+    let tempObj = { ...tempData[formID] };
+    console.log(tempData[formID]);
+    tempObj[fieldName] = fieldValue;
+
+    setTempData({ ...tempData, [formID]: tempObj });
   };
 
   const submitData = (e) => {
     e.preventDefault();
-    console.log(data);
+    setData({
+      ...tempData,
+    });
+    setMode("view");
   };
 
   return (
     <>
-      {mode !== "view"
-        ? (document.getElementsByTagName("body")[0].style.overflow = "hidden")
-        : (document.getElementsByTagName("body")[0].style.overflow = "auto")}
+      {}
       {mode == "editPersonal" ? (
         <PersonalFields
           handleTextFieldChange={captureDataFromTextFields}
           handleSubmit={submitData}
           handleCancel={cancelForm}
           id="personal"
-          data={data}
+          data={tempData.personal}
         />
       ) : null}
 
       <div className="page resume">
         <div className="header-resume personal-info">
           <EditButton handleClick={openPersonalForm} />
-          <h1>{name}</h1>
-          {email && (
+          <h1>{data.personal.name}</h1>
+          {data.personal.email && (
             <span className="info">
-              <span className="material-symbols-outlined">mail</span> {email}
+              <span className="material-symbols-outlined">mail</span>{" "}
+              {data.personal.email}
             </span>
           )}
-          {phone && (
+          {data.personal.phone && (
             <span className="info">
               <span className="material-symbols-outlined">phone_in_talk</span>{" "}
-              {phone}
+              {data.personal.phone}
             </span>
           )}
-          {location && (
+          {data.personal.location && (
             <span className="info">
               <span className="material-symbols-outlined">location_on</span>{" "}
-              {location}
+              {data.personal.location}
             </span>
           )}
         </div>
@@ -119,7 +141,7 @@ function Resume({
           <EditButton handleClick={() => console.log("click!")} />
           <h2>Education</h2>
           <ul>
-            {education.map((item) => (
+            {data.education.map((item) => (
               <li key={item.uuid}>
                 <h3>{item.degree}</h3>
                 <p>{item.institution}</p>
@@ -132,7 +154,7 @@ function Resume({
           <EditButton handleClick={() => console.log("click!")} />
           <h2>Latest Experience</h2>
           <ul>
-            {experience.map((item) => (
+            {data.experience.map((item) => (
               <li key={item.uuid}>
                 <h3>{item.position}</h3>
                 <h4>

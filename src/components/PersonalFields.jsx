@@ -10,13 +10,13 @@ function PersonalFields({
   return (
     <>
       <div className="backdrop"></div>
-      <div className="card" id={id}>
+      <div className="card">
         {console.log(data)}
         <div className="header">
           <h2>Personal Information</h2>
         </div>
         <div className="body">
-          <form action="#">
+          <form action="#" id={id} method="POST">
             <TextField
               name="name"
               label="First and Last Name"
