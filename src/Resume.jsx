@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import EditButton from "./components/EditButton";
 import { useState } from "react";
 import PersonalFields from "./components/PersonalFields";
+import EducationFields from "./components/EducationFields";
 
 let personalDefault = {
   name: "John Smith",
