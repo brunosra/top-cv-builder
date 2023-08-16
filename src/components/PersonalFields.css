@@ -1,0 +1,11 @@
+#personal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+
+#personal .fieldGroup {
+  width: calc(50% - 0.5rem);
+  display: flex;
+  flex-direction: column;
+}
