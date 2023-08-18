@@ -110,6 +110,20 @@ function Resume() {
     setMode("view");
   };
 
+  const addLine = (e, id) => {
+    // console.log(id, tempData);
+    e.preventDefault();
+    let newKey = uuidv4();
+    let tempObj = {
+      ...tempData[id],
+      [newKey]: {},
+    };
+
+    setTempData({ ...tempData, [id]: tempObj });
+  };
+
+  // const removeLine
+
   return (
     <>
       {}
@@ -128,6 +142,7 @@ function Resume() {
           handleTextFieldChange={captureDataFromTextFields}
           handleSubmit={submitData}
           handleCancel={cancelForm}
+          handleAddLine={(e) => addLine(e, "education")}
           id="education"
           data={tempData.education}
         />
