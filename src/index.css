@@ -101,7 +101,7 @@ button.ghost {
   transform: translate(-50%, -50%);
   background-color: rgba(0,0,0,0.9);
   width: 100%;
-  max-width: 600px;
+  max-width: 750px;
   max-height: calc(100vh - 2rem);
   overflow-y: auto;
 }
