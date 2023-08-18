@@ -1,0 +1,20 @@
+#experience .row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #222;
+}
+
+#experience .row .fieldGroup {
+  width: calc(50% - 0.5rem);
+}
+
+#experience .row .fieldGroup.descriptionField {
+  width: 88%;
+}
+
+#experience .row button {
+  flex-grow: 0;
+}
