@@ -10,7 +10,8 @@
   margin-bottom: 0.25rem;
   text-align: left;
 }
-.fieldGroup input {
+.fieldGroup input,
+.fieldGroup textarea {
   font-size: 0.75rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
@@ -23,6 +24,7 @@
   transition: border-color 0.2s linear;
   box-sizing: border-box;
   width: 100%;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .fieldGroup input:focus-visible {

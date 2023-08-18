@@ -4,6 +4,7 @@ import EditButton from "./components/EditButton";
 import { useState } from "react";
 import PersonalFields from "./components/PersonalFields";
 import EducationFields from "./components/EducationFields";
+import ExperienceFields from "./components/ExperienceFields";
 
 let personalDefault = {
   name: "John Smith",
@@ -24,9 +25,8 @@ let educationDefaultArr = {
   },
 };
 
-let experienceDefaultArr = [
-  {
-    uuid: uuidv4(),
+let experienceDefaultArr = {
+  [uuidv4()]: {
     position: "Mr. Super Director",
     company: "Super company",
     fromDate: "Jan 20XX",
@@ -34,8 +34,7 @@ let experienceDefaultArr = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam erat mi, fringilla et lectus id, porttitor ultrices nisl. Suspendisse scelerisque, erat nec sagittis imperdiet, dolor tortor ultrices est, vitae ornare purus quam ac nulla. Donec sodales sit amet augue eget blandit.",
   },
-  {
-    uuid: uuidv4(),
+  [uuidv4()]: {
     position: "Mr. Super Director",
     company: "Super company",
     fromDate: "Jan 20XX",
@@ -43,8 +42,7 @@ let experienceDefaultArr = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam erat mi, fringilla et lectus id, porttitor ultrices nisl. Suspendisse scelerisque, erat nec sagittis imperdiet, dolor tortor ultrices est, vitae ornare purus quam ac nulla. Donec sodales sit amet augue eget blandit.",
   },
-  {
-    uuid: uuidv4(),
+  [uuidv4()]: {
     position: "Mr. Super Director",
     company: "Super company",
     fromDate: "Jan 20XX",
@@ -52,7 +50,7 @@ let experienceDefaultArr = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam erat mi, fringilla et lectus id, porttitor ultrices nisl. Suspendisse scelerisque, erat nec sagittis imperdiet, dolor tortor ultrices est, vitae ornare purus quam ac nulla. Donec sodales sit amet augue eget blandit.",
   },
-];
+};
 
 function Resume() {
   const [mode, setMode] = useState("view");
@@ -76,6 +74,12 @@ function Resume() {
   const openEducationForm = () => {
     setTempData({ ...data });
     setMode("editEducation");
+    document.body.style.overflow = "hidden";
+  };
+
+  const openExperienceForm = () => {
+    setTempData({ ...data });
+    setMode("editExperience");
     document.body.style.overflow = "hidden";
   };
 
@@ -158,6 +162,18 @@ function Resume() {
         />
       ) : null}
 
+      {mode == "editExperience" ? (
+        <ExperienceFields
+          handleTextFieldChange={captureDataFromTextFields}
+          handleSubmit={submitData}
+          handleCancel={cancelForm}
+          handleAddLine={(e) => addLine(e, "experience")}
+          handleDeleteLine={(e) => removeLine(e, "experience")}
+          id="experience"
+          data={tempData.experience}
+        />
+      ) : null}
+
       <div className="page resume">
         <div className="header-resume personal-info">
           <EditButton handleClick={openPersonalForm} />
@@ -195,19 +211,20 @@ function Resume() {
           </ul>
         </div>
         <div className="section-resume experience">
-          <EditButton handleClick={() => console.log("click!")} />
+          <EditButton handleClick={openExperienceForm} />
           <h2>Latest Experience</h2>
           <ul>
-            {data.experience.map((item) => (
-              <li key={item.uuid}>
-                <h3>{item.position}</h3>
+            {Object.keys(data.experience).map((key) => (
+              <li key={key}>
+                <h3>{data.experience[key].position}</h3>
                 <h4>
-                  {item.company} ·{" "}
+                  {data.experience[key].company} ·{" "}
                   <span className="date">
-                    {item.fromDate} – {item.toDate}
+                    {data.experience[key].fromDate} –{" "}
+                    {data.experience[key].toDate}
                   </span>
                 </h4>
-                <p>{item.description}</p>
+                <p>{data.experience[key].description}</p>
               </li>
             ))}
           </ul>
