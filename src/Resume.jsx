@@ -111,7 +111,6 @@ function Resume() {
   };
 
   const addLine = (e, id) => {
-    // console.log(id, tempData);
     e.preventDefault();
     let newKey = uuidv4();
     let tempObj = {
@@ -122,7 +121,17 @@ function Resume() {
     setTempData({ ...tempData, [id]: tempObj });
   };
 
-  // const removeLine
+  const removeLine = (e, id) => {
+    e.preventDefault();
+    let key = e.target.getAttribute("rowkey");
+
+    let tempObj = {
+      ...tempData[id],
+    };
+
+    delete tempObj[key];
+    setTempData({ ...tempData, [id]: { ...tempObj } });
+  };
 
   return (
     <>
@@ -143,6 +152,7 @@ function Resume() {
           handleSubmit={submitData}
           handleCancel={cancelForm}
           handleAddLine={(e) => addLine(e, "education")}
+          handleDeleteLine={(e) => removeLine(e, "education")}
           id="education"
           data={tempData.education}
         />

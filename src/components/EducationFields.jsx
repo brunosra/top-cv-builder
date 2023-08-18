@@ -43,8 +43,10 @@ function EducationFields({
                     value={data[key].date}
                     rowkey={key}
                   />
-                  <button onClick={handleDeleteLine}>
-                    <span className="material-symbols-outlined">delete</span>
+                  <button onClick={handleDeleteLine} rowkey={key}>
+                    <span className="material-symbols-outlined" rowkey={key}>
+                      delete
+                    </span>
                   </button>
                 </div>
               );
