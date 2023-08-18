@@ -4,10 +4,11 @@
   flex-wrap: nowrap;
   justify-content: end;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 #education .row .fieldGroup {
-  width: auto;
+  width: calc(33.33333% - 0.5rem);
 }
 
 #education .row button {
