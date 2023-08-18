@@ -60,7 +60,7 @@ button {
   box-sizing: border-box;
 }
 button .material-symbols-outlined {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 button:hover {
   border-color: #646cff;
