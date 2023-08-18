@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import EditButton from "./components/EditButton";
 import { useState } from "react";
 import PersonalFields from "./components/PersonalFields";
+import EducationFields from "./components/EducationFields";
 
 let personalDefault = {
   name: "John Smith",
@@ -10,20 +11,18 @@ let personalDefault = {
   phone: "+55 5555 5555",
   location: "Somewhere, USA",
 };
-let educationDefaultArr = [
-  {
-    uuid: uuidv4(),
+let educationDefaultArr = {
+  [uuidv4()]: {
     degree: "BSc. Industrial Design",
     institution: "Universidade Estácio de Sá",
     date: "Graduated on 2004",
   },
-  {
-    uuid: uuidv4(),
+  [uuidv4()]: {
     degree: "BSc. Mechanical Engineering",
     institution: "Universidade do Estado do RJ",
     date: "Unfinished · 1998-2000",
   },
-];
+};
 
 let experienceDefaultArr = [
   {
@@ -74,21 +73,31 @@ function Resume() {
     document.body.style.overflow = "hidden";
   };
 
+  const openEducationForm = () => {
+    setTempData({ ...data });
+    setMode("editEducation");
+    document.body.style.overflow = "hidden";
+  };
+
   const cancelForm = () => {
     document.body.style.overflow = "auto";
     setMode("view");
   };
 
-  const captureDataFromTextFields = (e) => {
+  const captureDataFromTextFields = (e, rowKey = "") => {
     setTempData({ ...data });
 
     let formID = e.target.form.id;
     let fieldName = e.target.name;
     let fieldValue = e.target.value;
-
     let tempObj = { ...tempData[formID] };
-    console.log(tempData[formID]);
-    tempObj[fieldName] = fieldValue;
+
+    if (formID === "personal") {
+      tempObj[fieldName] = fieldValue;
+    } else {
+      let rowKey = e.target.getAttribute("rowkey");
+      tempObj[rowKey] = { ...tempObj[rowKey], [fieldName]: fieldValue };
+    }
 
     setTempData({ ...tempData, [formID]: tempObj });
   };
@@ -101,6 +110,29 @@ function Resume() {
     setMode("view");
   };
 
+  const addLine = (e, id) => {
+    e.preventDefault();
+    let newKey = uuidv4();
+    let tempObj = {
+      ...tempData[id],
+      [newKey]: {},
+    };
+
+    setTempData({ ...tempData, [id]: tempObj });
+  };
+
+  const removeLine = (e, id) => {
+    e.preventDefault();
+    let key = e.target.getAttribute("rowkey");
+
+    let tempObj = {
+      ...tempData[id],
+    };
+
+    delete tempObj[key];
+    setTempData({ ...tempData, [id]: { ...tempObj } });
+  };
+
   return (
     <>
       {}
@@ -111,6 +143,18 @@ function Resume() {
           handleCancel={cancelForm}
           id="personal"
           data={tempData.personal}
+        />
+      ) : null}
+
+      {mode == "editEducation" ? (
+        <EducationFields
+          handleTextFieldChange={captureDataFromTextFields}
+          handleSubmit={submitData}
+          handleCancel={cancelForm}
+          handleAddLine={(e) => addLine(e, "education")}
+          handleDeleteLine={(e) => removeLine(e, "education")}
+          id="education"
+          data={tempData.education}
         />
       ) : null}
 
@@ -138,14 +182,14 @@ function Resume() {
           )}
         </div>
         <div className="section-resume education">
-          <EditButton handleClick={() => console.log("click!")} />
+          <EditButton handleClick={openEducationForm} />
           <h2>Education</h2>
           <ul>
-            {data.education.map((item) => (
-              <li key={item.uuid}>
-                <h3>{item.degree}</h3>
-                <p>{item.institution}</p>
-                <p>{item.date}</p>
+            {Object.keys(data.education).map((key) => (
+              <li key={key}>
+                <h3>{data.education[key].degree}</h3>
+                <p>{data.education[key].institution}</p>
+                <p>{data.education[key].date}</p>
               </li>
             ))}
           </ul>

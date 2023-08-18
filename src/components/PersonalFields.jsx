@@ -1,4 +1,5 @@
 import TextField from "./TextField";
+import "./PersonalFields.css";
 
 function PersonalFields({
   handleTextFieldChange,
@@ -41,8 +42,12 @@ function PersonalFields({
               handleChange={handleTextFieldChange}
               value={data.location}
             />
-            <button onClick={handleCancel}>Cancel</button>
-            <button onClick={handleSubmit}>Save</button>
+            <div className="lastButtons">
+              <button onClick={handleCancel} className="ghost">
+                Cancel
+              </button>
+              <button onClick={handleSubmit}>Save</button>
+            </div>
           </form>
         </div>
       </div>
