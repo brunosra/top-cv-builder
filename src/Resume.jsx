@@ -11,20 +11,18 @@ let personalDefault = {
   phone: "+55 5555 5555",
   location: "Somewhere, USA",
 };
-let educationDefaultArr = [
-  {
-    uuid: uuidv4(),
+let educationDefaultArr = {
+  [uuidv4()]: {
     degree: "BSc. Industrial Design",
     institution: "Universidade Estácio de Sá",
     date: "Graduated on 2004",
   },
-  {
-    uuid: uuidv4(),
+  [uuidv4()]: {
     degree: "BSc. Mechanical Engineering",
     institution: "Universidade do Estado do RJ",
     date: "Unfinished · 1998-2000",
   },
-];
+};
 
 let experienceDefaultArr = [
   {
@@ -86,16 +84,20 @@ function Resume() {
     setMode("view");
   };
 
-  const captureDataFromTextFields = (e) => {
+  const captureDataFromTextFields = (e, rowKey = "") => {
     setTempData({ ...data });
 
     let formID = e.target.form.id;
     let fieldName = e.target.name;
     let fieldValue = e.target.value;
-
     let tempObj = { ...tempData[formID] };
-    console.log(tempData[formID]);
-    tempObj[fieldName] = fieldValue;
+
+    if (formID === "personal") {
+      tempObj[fieldName] = fieldValue;
+    } else {
+      let rowKey = e.target.getAttribute("rowkey");
+      tempObj[rowKey] = { ...tempObj[rowKey], [fieldName]: fieldValue };
+    }
 
     setTempData({ ...tempData, [formID]: tempObj });
   };
@@ -158,11 +160,11 @@ function Resume() {
           <EditButton handleClick={openEducationForm} />
           <h2>Education</h2>
           <ul>
-            {data.education.map((item) => (
-              <li key={item.uuid}>
-                <h3>{item.degree}</h3>
-                <p>{item.institution}</p>
-                <p>{item.date}</p>
+            {Object.keys(data.education).map((key) => (
+              <li key={key}>
+                <h3>{data.education[key].degree}</h3>
+                <p>{data.education[key].institution}</p>
+                <p>{data.education[key].date}</p>
               </li>
             ))}
           </ul>
